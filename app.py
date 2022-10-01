@@ -96,9 +96,17 @@ def detect():
     lmain.configure(image=imgtk)
     lmain.after(10, detect)  
 
-    counterBox.configure(text=counter) 
-    probBox.configure(text=bodylang_prob[bodylang_prob.argmax()]) 
-    classBox.configure(text=current_stage) 
+    
+#     counterBox.configure(text=counter) 
+#     probBox.configure(text=bodylang_prob[bodylang_prob.argmax()]) 
+#     classBox.configure(text=current_stage) 
+
+#   Sometimes the .configure method does not seem to work giving error of unknonw option "-text"
+#   So the following method works instead
+
+    probBox.set_text(text=bodylang_prob[bodylang_prob.argmax()])
+    classBox.set_text(text = current_stage) 
+    counterBox.set_text(text = counter)
 
 detect() 
 window.mainloop()
